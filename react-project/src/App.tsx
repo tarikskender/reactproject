@@ -5,6 +5,7 @@ import Home from "./Home";
 import SecondPage from "./SecondPage";
 import ContactForm from "./ContactForm";
 import { getTheme } from "./theme";
+import ThirdPage from "./ThirdPage";
 
 const App: React.FC = () => {
   const [themeMode, setThemeMode] = useState<"light" | "dark">("light");
@@ -22,6 +23,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/second-page" element={<SecondPage />} />
           <Route path="/contact" element={<ContactForm />} />
+          <Route path="/success" element={<ThirdPage />} />
         </Routes>
         <Button onClick={toggleTheme}>Toggle Theme</Button>
       </Router>

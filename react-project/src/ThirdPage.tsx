@@ -3,7 +3,19 @@ import { Container, Typography } from "@mui/material";
 
 const ThirdPage: React.FC = () => {
   return (
-    <Container maxWidth="sm">
+    <Container
+      maxWidth="sm"
+      className="responseMessage"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        textAlign: "center",
+        padding: 3,
+      }}
+    >
       <Typography variant="h4" component="h2" gutterBottom>
         Submission Success
       </Typography>

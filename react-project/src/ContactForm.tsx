@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, TextField, Button, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const ContactForm: React.FC = () => {
+interface Profile {
+  name: string;
+  description: string;
+}
+
+interface Props {
+  profile?: Profile;
+}
+
+const ContactForm: React.FC<Props> = ({ profile }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,9 +22,28 @@ const ContactForm: React.FC = () => {
     email: "",
     message: "",
   });
-  const navigate = useNavigate();
 
-  const validate = () => {
+  useEffect(() => {
+    if (profile) {
+      setFormData({
+        name: profile.name || "",
+        email: "", // Assuming no email in profile, set empty or modify accordingly
+        message: profile.description || "",
+      });
+    }
+  }, [profile]);
+
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const validate = (): boolean => {
     let tempErrors = { name: "", email: "", message: "" };
     let formIsValid = true;
 
@@ -39,18 +67,15 @@ const ContactForm: React.FC = () => {
     return formIsValid;
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validate()) {
       alert("Form submitted successfully!");
       setFormData({ name: "", email: "", message: "" }); // Optionally clear form here
-      navigate("/success"); // Navigate to ThirdPage after the alert
+      navigate("/third-page", { state: { profile } });
     }
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
   };
 
   return (

@@ -1,10 +1,14 @@
+// Inside SecondPage.tsx
 import React from "react";
 import { Container, Typography } from "@mui/material";
-import "./SecondPage.css";
+import { useLocation } from "react-router-dom";
 import ContactForm from "./ContactForm";
-import "./ContactForm";
+import "./SecondPage.css";
 
 const SecondPage: React.FC = () => {
+  const location = useLocation();
+  const { profile } = location.state || {};
+
   return (
     <Container
       maxWidth="sm"
@@ -22,7 +26,7 @@ const SecondPage: React.FC = () => {
       <Typography variant="body1" className="content">
         Welcome to the second page!
       </Typography>
-      <ContactForm></ContactForm>
+      <ContactForm profile={profile} />
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Typography, Button, Box, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import EditableProfileCard from "./EditableProfileCard";
@@ -6,8 +6,13 @@ import EditableProfileCard from "./EditableProfileCard";
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
+  const [profile, setProfile] = useState({
+    name: "Tarik Skender",
+    description: "Student at IBU",
+  });
+
   const handleLearnMoreClick = () => {
-    navigate("/second-page");
+    navigate("/second-page", { state: { profile } });
   };
 
   return (
@@ -37,7 +42,7 @@ const Home: React.FC = () => {
             >
               Learn More
             </Button>
-            <EditableProfileCard></EditableProfileCard>
+            <EditableProfileCard profile={profile} setProfile={setProfile} />
           </Box>
         </Grid>
       </Grid>

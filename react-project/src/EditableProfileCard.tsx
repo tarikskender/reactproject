@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
-function EditableProfileCard() {
-  const [name, setName] = useState("Tarik Skender");
-  const [description, setDescription] = useState("Student at IBU");
+interface Profile {
+  name: string;
+  description: string;
+}
 
+interface EditableProfileCardProps {
+  profile: Profile;
+  setProfile: (profile: Profile) => void;
+}
+
+function EditableProfileCard({
+  profile,
+  setProfile,
+}: EditableProfileCardProps) {
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
+    setProfile({ ...profile, name: event.target.value });
   };
 
   const handleDescriptionChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    setDescription(event.target.value);
+    setProfile({ ...profile, description: event.target.value });
   };
 
   const cardStyle: React.CSSProperties = {
@@ -32,7 +42,7 @@ function EditableProfileCard() {
         <label htmlFor="name">Name:</label>
         <input
           type="text"
-          value={name}
+          value={profile.name}
           onChange={handleNameChange}
           id="name"
           style={{ width: "100%", marginBottom: "10px" }}
@@ -41,7 +51,7 @@ function EditableProfileCard() {
       <div>
         <label htmlFor="description">Description:</label>
         <textarea
-          value={description}
+          value={profile.description}
           onChange={handleDescriptionChange}
           id="description"
           style={{ width: "100%", height: "100px" }}
