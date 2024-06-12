@@ -27,7 +27,7 @@ const ContactForm: React.FC<Props> = ({ profile }) => {
     if (profile) {
       setFormData({
         name: profile.name || "",
-        email: "", // Assuming no email in profile, set empty or modify accordingly
+        email: "",
         message: profile.description || "",
       });
     }
@@ -73,7 +73,7 @@ const ContactForm: React.FC<Props> = ({ profile }) => {
     event.preventDefault();
     if (validate()) {
       alert("Form submitted successfully!");
-      setFormData({ name: "", email: "", message: "" }); // Optionally clear form here
+      setFormData({ name: "", email: "", message: "" });
       navigate("/third-page", { state: { profile } });
     }
   };

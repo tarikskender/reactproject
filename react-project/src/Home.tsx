@@ -32,7 +32,7 @@ const Home: React.FC = () => {
         <Grid item xs={12} sm={6}>
           <Box sx={{ textAlign: "center" }}>
             <Typography variant="h5" gutterBottom>
-              Explore the portfolio, read our blog, or check out our products!
+              Explore my portfolio, see my posts, or check out my projects.
             </Typography>
             <Button
               className="buttonChange"
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
               color="primary"
               onClick={handleLearnMoreClick}
             >
-              Learn More
+              Contact me
             </Button>
             <EditableProfileCard profile={profile} setProfile={setProfile} />
           </Box>

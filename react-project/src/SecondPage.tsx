@@ -1,4 +1,3 @@
-// Inside SecondPage.tsx
 import React from "react";
 import { Container, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";

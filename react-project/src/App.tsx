@@ -4,8 +4,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import SecondPage from "./SecondPage";
 import ContactForm from "./ContactForm";
-import { getTheme } from "./theme";
 import ThirdPage from "./ThirdPage";
+import Navbar from "./Navbar";
+import { getTheme } from "./theme";
+import About from "./About";
+import Projects from "./Projects";
+import Portfolio from "./Portfolio";
+import Posts from "./Posts";
 
 const App: React.FC = () => {
   const [themeMode, setThemeMode] = useState<"light" | "dark">("light");
@@ -17,15 +22,26 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline /> {}
+      <CssBaseline />
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/second-page" element={<SecondPage />} />
+          <Route path="/third-page" element={<ThirdPage />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/success" element={<ThirdPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/posts" element={<Posts />} />
         </Routes>
-        <Button onClick={toggleTheme}>Toggle Theme</Button>
+        <Button
+          onClick={toggleTheme}
+          style={{ position: "fixed", bottom: 20, right: 20 }}
+        >
+          Toggle Theme
+        </Button>
       </Router>
     </ThemeProvider>
   );

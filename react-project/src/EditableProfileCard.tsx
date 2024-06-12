@@ -1,4 +1,5 @@
 import React from "react";
+import logobig from "./assets/logobig.png";
 
 interface Profile {
   name: string;
@@ -34,7 +35,7 @@ function EditableProfileCard({
   return (
     <div style={cardStyle}>
       <img
-        src="./assets/jakaslika.png"
+        src={logobig} // Using the imported image variable
         alt="Profile"
         style={{ width: "100%", marginBottom: "20px" }}
       />
